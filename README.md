@@ -38,7 +38,7 @@ We can't help with every problem and won't add features that we don't need.**
 ### Getting Started
 - You can view the settings with `/settings overview`
 - To set up a log channel use `/settings log-channel <#channel>`
-- You can import strikes, mutes and bans from Vortex using `/import`
+- You can import strikes, mutes and bans from Argus using `/import`
 - If you want to configure a YouTube playlist, you can use `/settings playlist <url>`
 - You can also add a Zendesk help center, using `/settings helpcenter <url>` to enable the `/article` command.
 

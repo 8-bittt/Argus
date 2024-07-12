@@ -5,12 +5,12 @@ import {EmbedBuilder} from 'discord.js';
 import bot from '../../bot/Bot.js';
 
 /**
- * @typedef {Object} VortexModeration
+ * @typedef {Object} ArgusModeration
  * @property {number} value
  * @property {import('discord.js').Snowflake} id
  */
 
-export default class VortexImporter extends Importer {
+export default class ArgusImporter extends Importer {
     /**
      * key: userid
      * value: timestamp
@@ -34,7 +34,7 @@ export default class VortexImporter extends Importer {
 
     /**
      * @param {import('discord.js').Snowflake} guildID
-     * @param {Object} data JSON exported data from vortex
+     * @param {Object} data JSON exported data from argus
      * @param {Object} data.tempmutes
      * @param {Object} data.strikes
      * @param {Object} data.tempbans
@@ -49,7 +49,7 @@ export default class VortexImporter extends Importer {
 
     /**
      * @param {Object} object
-     * @return {VortexModeration[]}
+     * @return {ArgusModeration[]}
      */
     keyValueArray(object) {
         const result = [];
@@ -97,7 +97,7 @@ export default class VortexImporter extends Importer {
     }
 
     /**
-     * @param {VortexModeration} moderation
+     * @param {ArgusModeration} moderation
      * @param {String} type
      * @return {Moderation}
      */
@@ -107,13 +107,13 @@ export default class VortexImporter extends Importer {
             userid: moderation.id,
             action: type,
             expireTime: moderation.value,
-            reason: /** @type {String} */'Imported from Vortex',
+            reason: /** @type {String} */'Imported from Argus',
             moderator: bot.client.user.id
         });
     }
 
     /**
-     * @param {VortexModeration} moderation
+     * @param {ArgusModeration} moderation
      * @return {Moderation}
      * @private
      */
@@ -123,7 +123,7 @@ export default class VortexImporter extends Importer {
             userid: moderation.id,
             value: moderation.value,
             action: 'strike',
-            reason: 'Imported from Vortex',
+            reason: 'Imported from Argus',
             moderator: bot.client.user.id
         });
     }
