@@ -1,4 +1,4 @@
-import {Collection, PermissionFlagsBits, RESTJSONErrorCodes, ThreadChannel, userMention} from 'discord.js';
+import {bold, Collection, PermissionFlagsBits, RESTJSONErrorCodes, ThreadChannel, userMention} from 'discord.js';
 import GuildSettings from '../settings/GuildSettings.js';
 import bot from '../bot/Bot.js';
 import MemberWrapper from '../discord/MemberWrapper.js';
@@ -9,6 +9,7 @@ import {formatTime} from '../util/timeutils.js';
 import RepeatedMessage from './RepeatedMessage.js';
 import SafeSearch from './SafeSearch.js';
 import logger from '../bot/Logger.js';
+import cloudVision from '../apis/CloudVision.js';
 
 export class AutoModManager {
     #safeSearchCache;
@@ -178,22 +179,55 @@ export class AutoModManager {
 
         const words = (/** @type {Collection<number, BadWord>} */ await BadWord.get(channel.id, message.guild.id))
             .sort((a, b) => b.priority - a.priority);
+
         for (let word of words.values()) {
-            if (word.matches(message)) {
-                const reason = 'Using forbidden words or phrases';
-                const comment = `(Filter ID: ${word.id})`;
-                await bot.delete(message, reason + ' ' + comment);
-                if (word.response !== 'disabled') {
-                    await this.#sendWarning(message, word.getResponse());
-                }
-                if (word.punishment.action !== 'none') {
-                    const member = new Member(message.author, message.guild);
-                    await member.executePunishment(word.punishment, reason, comment);
-                }
+            if (word.matches(message.content)) {
+                await this.#deleteBadWordMessage(word, message);
                 return true;
             }
         }
+
+        if (!cloudVision.isEnabled || !(await GuildSettings.get(message.guild.id)).isFeatureWhitelisted) {
+            return false;
+        }
+
+        let texts = null;
+        for (let word of words.values()) {
+            if (word.enableVision && word.trigger.supportsImages()) {
+                texts ??= await cloudVision.getImageText(message);
+                for (const text of texts) {
+                    if (word.matches(text)) {
+                        await this.#deleteBadWordMessage(word, message);
+                        return true;
+                    }
+                }
+
+            }
+        }
+
         return false;
+    }
+
+    /**
+     * @param {BadWord} word
+     * @param {import('discord.js').Message} message
+     * @returns {Promise<void>}
+     */
+    async #deleteBadWordMessage(word, message) {
+        const reason = 'Using forbidden words or phrases';
+        const comment = `(Filter ID: ${word.id})`;
+        await bot.delete(message, reason + ' ' + comment);
+        if (word.response !== 'disabled') {
+            await this.#sendWarning(message, word.getResponse());
+        }
+
+        const member = new Member(message.author, message.guild);
+        if (word.punishment.action !== 'none') {
+            await member.executePunishment(word.punishment, reason, comment);
+        }
+        if (word.dm) {
+            await member.guild.sendDM(member.user, `Your message in ${bold(message.guild.name)} was removed: ` + word.dm);
+        }
     }
 
     /**
