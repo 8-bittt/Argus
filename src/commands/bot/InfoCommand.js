@@ -73,9 +73,9 @@ export default class InfoCommand extends Command {
         await interaction.reply({
             ephemeral: true,
             embeds: [new KeyValueEmbed()
-                .setAuthor({name: 'ModBot by Aternos', iconURL: bot.client.user.displayAvatarURL()})
+                .setAuthor({name: 'Argus by 8bit.dev', iconURL: bot.client.user.displayAvatarURL()})
                 .addLine(
-                    'ModBot is an open source moderation bot with advanced features developed by [Aternos](https://aternos.org/). ' +
+                    'Argus is an open source moderation bot with advanced features developed by 8Bit (https://aternos.org/). ' +
                     'It uses modern Discord features like slash-commands, context-menus, timeouts, buttons, select-menus ' +
                     'and modals and offers everything you need for moderation. Including bad-words and auto-responses ' +
                     'with support for regex, detecting phishing urls, temporary bans, a strike system, message logging ' +
@@ -108,7 +108,7 @@ export default class InfoCommand extends Command {
     }
 
     getDescription() {
-        return 'Show general information about ModBot';
+        return 'Show general information about Argus';
     }
 
     getName() {
