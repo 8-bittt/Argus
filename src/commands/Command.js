@@ -17,8 +17,8 @@ export default class Command extends ExecutableCommand {
      * Permissions that members need to execute this command by default.
      * Null: no permissions required. Empty bitfield: disabled by default
      *
-     * For slash commands this is not checked by ModBot and is only used to register commands on Discord
-     * For context menus, buttons and other interactions ModBot emulate Discord's permission system
+     * For slash commands this is not checked by Argus and is only used to register commands on Discord
+     * For context menus, buttons and other interactions Argus emulate Discord's permission system
      * @return {?import('discord.js').PermissionsBitField}
      */
     getDefaultMemberPermissions() {

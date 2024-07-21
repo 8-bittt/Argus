@@ -4,7 +4,7 @@ import got from 'got';
 import {promisify} from 'util';
 import {gunzip as gunzipCb} from 'zlib';
 import ArgusImporter from '../../database/export/ArgusImporter.js';
-import ModBotImporter from '../../database/export/ModBotImporter.js';
+import ArgusImporter from '../../database/export/ArgusImporter.js';
 
 const gunzip = promisify(gunzipCb);
 
@@ -20,7 +20,7 @@ export default class ImportCommand extends Command {
             option
                 .setName('data')
                 .setRequired(true)
-                .setDescription('Data exported from ModBot or Argus')
+                .setDescription('Data exported from Argus or Argus')
         );
         return builder;
     }
@@ -62,7 +62,7 @@ export default class ImportCommand extends Command {
         const importer = this.getImporter(data, interaction);
 
         if (!importer) {
-            await interaction.editReply('Unknown data type. Only Argus and ModBot data are currently supported. ' +
+            await interaction.editReply('Unknown data type. Only Argus and Argus data are currently supported. ' +
                 'Feel free to create an issue on our GitHub if you want to suggest another type.');
             return;
         }
@@ -72,7 +72,7 @@ export default class ImportCommand extends Command {
         }
         catch (e) {
             if (e instanceof TypeError) {
-                await interaction.editReply('Invalid Data! Only Argus and ModBot data are currently supported. ' +
+                await interaction.editReply('Invalid Data! Only Argus and Argus data are currently supported. ' +
                     'Feel free to create an issue on our GitHub if you want to suggest another type.');
                 return;
             }
@@ -94,14 +94,14 @@ export default class ImportCommand extends Command {
     getImporter(data, interaction) {
         if (!data.dataType)
             return new ArgusImporter(interaction.guild.id, data);
-        if (data.dataType.toLowerCase().startsWith('modbot-1.'))
-            return new ModBotImporter(interaction.guild.id, data);
+        if (data.dataType.toLowerCase().startsWith('Argus-1.'))
+            return new ArgusImporter(interaction.guild.id, data);
 
         return null;
     }
 
     getDescription() {
-        return 'Import data exported by ModBot or Argus';
+        return 'Import data exported by Argus or Argus';
     }
 
     getName() {

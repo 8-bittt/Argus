@@ -38,7 +38,7 @@ export default class PlaylistCommand extends SubCommand {
 
         if (!config.data.googleApiKey) {
             return await interaction.editReply(ErrorEmbed
-                .message('There is no google API key configured for this instance of ModBot!'));
+                .message('There is no google API key configured for this instance of Argus!'));
         }
 
         const id = this.getPlaylistId(option);

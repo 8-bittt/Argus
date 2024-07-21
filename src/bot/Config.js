@@ -86,70 +86,70 @@ export class Config {
     }
 
     async load() {
-        if (process.env.MODBOT_USE_ENV) {
-            let googleCloudCredentials = process.env.MODBOT_GOOGLE_CLOUD_CREDENTIALS;
+        if (process.env.Argus_USE_ENV) {
+            let googleCloudCredentials = process.env.Argus_GOOGLE_CLOUD_CREDENTIALS;
             if (googleCloudCredentials) {
                 googleCloudCredentials = JSON.parse((new Buffer(googleCloudCredentials, 'base64')).toString());
             }
             else {
                 googleCloudCredentials = {
-                    client_email: process.env.MODBOT_GOOGLE_CLOUD_CREDENTIALS_CLIENT_EMAIL,
-                    private_key: process.env.MODBOT_GOOGLE_CLOUD_CREDENTIALS_PRIVATE_KEY?.replaceAll('\\n', '\n'),
+                    client_email: process.env.Argus_GOOGLE_CLOUD_CREDENTIALS_CLIENT_EMAIL,
+                    private_key: process.env.Argus_GOOGLE_CLOUD_CREDENTIALS_PRIVATE_KEY?.replaceAll('\\n', '\n'),
                 };
             }
 
 
             // load settings from env
             this.#data = {
-                authToken: process.env.MODBOT_AUTH_TOKEN,
+                authToken: process.env.Argus_AUTH_TOKEN,
                 database: {
-                    host: process.env.MODBOT_DATABASE_HOST,
-                    user: process.env.MODBOT_DATABASE_USER ?? 'modbot',
-                    password: process.env.MODBOT_DATABASE_PASSWORD,
-                    database: process.env.MODBOT_DATABASE_DATABASE ?? 'modbot',
-                    port: parseInt(process.env.MODBOT_DATABASE_PORT ?? '3306'),
+                    host: process.env.Argus_DATABASE_HOST,
+                    user: process.env.Argus_DATABASE_USER ?? 'Argus',
+                    password: process.env.Argus_DATABASE_PASSWORD,
+                    database: process.env.Argus_DATABASE_DATABASE ?? 'Argus',
+                    port: parseInt(process.env.Argus_DATABASE_PORT ?? '3306'),
                 },
-                googleApiKey:  process.env.MODBOT_GOOGLE_API_KEY,
+                googleApiKey:  process.env.Argus_GOOGLE_API_KEY,
                 googleCloud: {
                     credentials: googleCloudCredentials,
                     vision: {
-                        enabled: this.#parseBooleanFromEnv(process.env.MODBOT_GOOGLE_CLOUD_VISION_ENABLED)
+                        enabled: this.#parseBooleanFromEnv(process.env.Argus_GOOGLE_CLOUD_VISION_ENABLED)
                     },
                     logging: {
-                        enabled: this.#parseBooleanFromEnv(process.env.MODBOT_GOOGLE_CLOUD_LOGGING_ENABLED),
-                        projectId: process.env.MODBOT_GOOGLE_CLOUD_LOGGING_PROJECT_ID,
-                        logName: process.env.MODBOT_GOOGLE_CLOUD_LOGGING_LOG_NAME,
+                        enabled: this.#parseBooleanFromEnv(process.env.Argus_GOOGLE_CLOUD_LOGGING_ENABLED),
+                        projectId: process.env.Argus_GOOGLE_CLOUD_LOGGING_PROJECT_ID,
+                        logName: process.env.Argus_GOOGLE_CLOUD_LOGGING_LOG_NAME,
                     },
                 },
-                featureWhitelist: (process.env.MODBOT_FEATURE_WHITELIST ?? '').split(/ *, */),
+                featureWhitelist: (process.env.Argus_FEATURE_WHITELIST ?? '').split(/ *, */),
                 emoji: {
-                    source: process.env.MODBOT_EMOJI_SOURCE,
-                    privacy: process.env.MODBOT_EMOJI_PRIVACY,
-                    invite: process.env.MODBOT_EMOJI_INVITE,
-                    discord: process.env.MODBOT_EMOJI_DISCORD,
-                    youtube: process.env.MODBOT_EMOJI_YOUTUBE,
-                    zendesk: process.env.MODBOT_EMOJI_ZENDESK,
-                    firstPage: process.env.MODBOT_EMOJI_FIRST_PAGE,
-                    previousPage: process.env.MODBOT_EMOJI_PREVIOUS_PAGE,
-                    refresh: process.env.MODBOT_EMOJI_REFRESH,
-                    nextPage: process.env.MODBOT_EMOJI_NEXT_PAGE,
-                    lastPage: process.env.MODBOT_EMOJI_LAST_PAGE,
-                    announcement: process.env.MODBOT_EMOJI_ANNOUNCEMENT,
-                    channel: process.env.MODBOT_EMOJI_CHANNEL,
-                    forum: process.env.MODBOT_EMOJI_FORUM,
-                    stage: process.env.MODBOT_EMOJI_STAGE,
-                    thread: process.env.MODBOT_EMOJI_THREAD,
-                    voice: process.env.MODBOT_EMOJI_VOICE,
-                    avatar: process.env.MODBOT_EMOJI_AVATAR,
-                    ban: process.env.MODBOT_EMOJI_BAN,
-                    moderations: process.env.MODBOT_EMOJI_MODERATIONS,
-                    mute: process.env.MODBOT_EMOJI_MUTE,
-                    pardon: process.env.MODBOT_EMOJI_PARDON,
-                    strike: process.env.MODBOT_EMOJI_STRIKE,
-                    kick: process.env.MODBOT_EMOJI_KICK,
-                    userCreated: process.env.MODBOT_EMOJI_USER_CREATED,
-                    userId: process.env.MODBOT_EMOJI_USER_ID,
-                    userJoined: process.env.MODBOT_EMOJI_USER_JOINED,
+                    source: process.env.Argus_EMOJI_SOURCE,
+                    privacy: process.env.Argus_EMOJI_PRIVACY,
+                    invite: process.env.Argus_EMOJI_INVITE,
+                    discord: process.env.Argus_EMOJI_DISCORD,
+                    youtube: process.env.Argus_EMOJI_YOUTUBE,
+                    zendesk: process.env.Argus_EMOJI_ZENDESK,
+                    firstPage: process.env.Argus_EMOJI_FIRST_PAGE,
+                    previousPage: process.env.Argus_EMOJI_PREVIOUS_PAGE,
+                    refresh: process.env.Argus_EMOJI_REFRESH,
+                    nextPage: process.env.Argus_EMOJI_NEXT_PAGE,
+                    lastPage: process.env.Argus_EMOJI_LAST_PAGE,
+                    announcement: process.env.Argus_EMOJI_ANNOUNCEMENT,
+                    channel: process.env.Argus_EMOJI_CHANNEL,
+                    forum: process.env.Argus_EMOJI_FORUM,
+                    stage: process.env.Argus_EMOJI_STAGE,
+                    thread: process.env.Argus_EMOJI_THREAD,
+                    voice: process.env.Argus_EMOJI_VOICE,
+                    avatar: process.env.Argus_EMOJI_AVATAR,
+                    ban: process.env.Argus_EMOJI_BAN,
+                    moderations: process.env.Argus_EMOJI_MODERATIONS,
+                    mute: process.env.Argus_EMOJI_MUTE,
+                    pardon: process.env.Argus_EMOJI_PARDON,
+                    strike: process.env.Argus_EMOJI_STRIKE,
+                    kick: process.env.Argus_EMOJI_KICK,
+                    userCreated: process.env.Argus_EMOJI_USER_CREATED,
+                    userId: process.env.Argus_EMOJI_USER_ID,
+                    userJoined: process.env.Argus_EMOJI_USER_JOINED,
                 }
             };
         }

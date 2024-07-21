@@ -11,6 +11,6 @@ ENV NODE_ENV=production
 RUN npm ci
 
 # Environment
-ENV MODBOT_COMMIT_HASH=$COMMIT_HASH
-ENV MODBOT_USE_ENV=1
+ENV Argus_COMMIT_HASH=$COMMIT_HASH
+ENV Argus_USE_ENV=1
 CMD ["npm", "start"]

@@ -9,7 +9,7 @@ export default class Exporter {
     /**
      * @type {string}
      */
-    dataType = 'modbot-1.0.0';
+    dataType = 'Argus-1.0.0';
 
     /**
      * @type {GuildSettingsJSON}

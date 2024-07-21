@@ -1,5 +1,5 @@
 {
-  "name": "modbot",
+  "name": "Argus",
   "version": "3.6.1",
   "description": "Discord Bot for the Aternos Discord server",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aternosorg/modbot.git"
+    "url": "git+https://github.com/aternosorg/Argus.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aternosorg/modbot/issues"
+    "url": "https://github.com/aternosorg/Argus/issues"
   },
-  "homepage": "https://github.com/aternosorg/modbot#readme",
+  "homepage": "https://github.com/aternosorg/Argus#readme",
   "engines": {
     "node": ">=18.0.0"
   },

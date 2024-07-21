@@ -8,7 +8,7 @@ import {EmbedBuilder} from 'discord.js';
 import GuildWrapper from '../../discord/GuildWrapper.js';
 import {asyncFilter} from '../../util/util.js';
 
-export default class ModBotImporter extends Importer {
+export default class ArgusImporter extends Importer {
 
     /**
      * @type {Client}
@@ -27,7 +27,7 @@ export default class ModBotImporter extends Importer {
     
     /**
      * @param {import('discord.js').Snowflake} guildID
-     * @param {Exporter} data JSON exported data (modbot-1.0.0)
+     * @param {Exporter} data JSON exported data (Argus-1.0.0)
      */
     constructor(guildID, data) {
         super();

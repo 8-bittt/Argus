@@ -33,15 +33,15 @@ export default class ExportCommand extends Command {
         await interaction.editReply({
             files: [
                 new AttachmentBuilder(data, {
-                    name: `ModBot-data-${interaction.guild.id}.json${gzip ? '.gz' : ''}`,
-                    description: 'ModBot data for this guild. Use /import to import on another guild or ModBot instance'
+                    name: `Argus-data-${interaction.guild.id}.json${gzip ? '.gz' : ''}`,
+                    description: 'Argus data for this guild. Use /import to import on another guild or Argus instance'
                 }),
             ]
         });
     }
 
     getDescription() {
-        return 'Export all data ModBot stores about this guild';
+        return 'Export all data Argus stores about this guild';
     }
 
     getName() {

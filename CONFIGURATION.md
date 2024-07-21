@@ -1,18 +1,18 @@
 # Configuration
-ModBot offers two different ways to configure it, a config file or environment variables. To use the config file
+Argus offers two different ways to configure it, a config file or environment variables. To use the config file
 just copy the [minimal configuration example](#minimal-configuration-file) to a new file called config.json and modify the options in it.
-If you chose to use environment variables then you first need to set the environment variable `MODBOT_USE_ENV`.
+If you chose to use environment variables then you first need to set the environment variable `Argus_USE_ENV`.
 
 Environment variables use `SCREAMING_SNAKE_CASE`, the configuration file uses `camelCase`.
 
-If both a config file exists and the `MODBOT_USE_ENV` variable is set ModBot will ignore the config.json file.
+If both a config file exists and the `Argus_USE_ENV` variable is set Argus will ignore the config.json file.
 
 ## Auth Token (required)
 Discord bot authentication token, can be generated in the [Developer Portal](https://discordapp.com/developers/applications/)
 
 | type   | config file | environment         |
 |--------|-------------|---------------------|
-| string | `authToken` | `MODBOT_AUTH_TOKEN` |
+| string | `authToken` | `Argus_AUTH_TOKEN` |
 
 ## Database (required)
 MySQL/MariaDB access credentials. Other SQL dialects or Databases are not supported. If you're using a config file,
@@ -24,44 +24,44 @@ Database hostname or IP
 
 | type   | config file     | environment            |
 |--------|-----------------|------------------------|
-| string | `database.host` | `MODBOT_DATABASE_HOST` |
+| string | `database.host` | `Argus_DATABASE_HOST` |
 
 ### User
-Database username (Default: `modbot`)
+Database username (Default: `Argus`)
 
 | type   | config file     | environment            |
 |--------|-----------------|------------------------|
-| string | `database.user` | `MODBOT_DATABASE_USER` |
+| string | `database.user` | `Argus_DATABASE_USER` |
 
 ### Password
 Database password
 
 | type   | config file         | environment                |
 |--------|---------------------|----------------------------|
-| string | `database.password` | `MODBOT_DATABASE_PASSWORD` |
+| string | `database.password` | `Argus_DATABASE_PASSWORD` |
 
 ### Database
-Database name (Default: `modbot`)
+Database name (Default: `Argus`)
 
 | type   | config file         | environment                |
 |--------|---------------------|----------------------------|
-| string | `database.database` | `MODBOT_DATABASE_DATABASE` |
+| string | `database.database` | `Argus_DATABASE_DATABASE` |
 
 ### Port
 Database port (Default: `3306`)
 
 | type   | config file     | environment            |
 |--------|-----------------|------------------------|
-| number | `database.port` | `MODBOT_DATABASE_PORT` |
+| number | `database.port` | `Argus_DATABASE_PORT` |
 
 ### Database JSON Example
 ```json
 {
   "database": {
     "host": "localhost",
-    "user": "modbot",
+    "user": "Argus",
     "password": "password",
-    "database": "modbot",
+    "database": "Argus",
     "port": 3306
   }
 }
@@ -72,7 +72,7 @@ Google cloud API Key. Currently used for the YouTube v3 API (`/video` and `/play
 
 | type   | config file    | environment             |
 |--------|----------------|-------------------------|
-| string | `googleApiKey` | `MODBOT_GOOGLE_API_KEY` |
+| string | `googleApiKey` | `Argus_GOOGLE_API_KEY` |
 
 ## Google Cloud (optional)
 Configuration for Google cloud features
@@ -86,17 +86,17 @@ These credentials are used for the following apis if you enabled them in the con
 
 ### Base64 Encoded
 If you're using environment variables it is recommended to base64 encode the credentials JSON object and set them in the
-environment variable `MODBOT_GOOGLE_CLOUD_CREDENTIALS`. If this variable is set ModBot will ignore the other variables.
+environment variable `Argus_GOOGLE_CLOUD_CREDENTIALS`. If this variable is set Argus will ignore the other variables.
 
 #### Client Email
 | type   | config file                            | environment                                    |
 |--------|----------------------------------------|------------------------------------------------|
-| string | `googleCloud.credentials.client_email` | `MODBOT_GOOGLE_CLOUD_CREDENTIALS_CLIENT_EMAIL` |
+| string | `googleCloud.credentials.client_email` | `Argus_GOOGLE_CLOUD_CREDENTIALS_CLIENT_EMAIL` |
 
 #### Private Key
 | type   | config file                           | environment                                   |
 |--------|---------------------------------------|-----------------------------------------------|
-| string | `googleCloud.credentials.private_key` | `MODBOT_GOOGLE_CLOUD_CREDENTIALS_PRIVATE_KEY` |
+| string | `googleCloud.credentials.private_key` | `Argus_GOOGLE_CLOUD_CREDENTIALS_PRIVATE_KEY` |
 
 #### Credentials JSON Example
 ```json
@@ -117,17 +117,17 @@ If you don't want to use Google cloud logging just ignore this.
 #### Enabled
 | type    | config file                   | environment                           |
 |---------|-------------------------------|---------------------------------------|
-| boolean | `googleCloud.logging.enabled` | `MODBOT_GOOGLE_CLOUD_LOGGING_ENABLED` |
+| boolean | `googleCloud.logging.enabled` | `Argus_GOOGLE_CLOUD_LOGGING_ENABLED` |
 
 #### Project ID
 | type   | config file                     | environment                              |
 |--------|---------------------------------|------------------------------------------|
-| string | `googleCloud.logging.projectId` | `MODBOT_GOOGLE_CLOUD_LOGGING_PROJECT_ID` |
+| string | `googleCloud.logging.projectId` | `Argus_GOOGLE_CLOUD_LOGGING_PROJECT_ID` |
 
 #### Log Name
 | type   | config file                   | environment                            |
 |--------|-------------------------------|----------------------------------------|
-| string | `googleCloud.logging.logName` | `MODBOT_GOOGLE_CLOUD_LOGGING_LOG_NAME` |
+| string | `googleCloud.logging.logName` | `Argus_GOOGLE_CLOUD_LOGGING_LOG_NAME` |
 
 #### Logging JSON Example
 ```json
@@ -136,7 +136,7 @@ If you don't want to use Google cloud logging just ignore this.
     "logging": {
       "enabled": true,
       "projectId": "example-project",
-      "logName": "modbot"
+      "logName": "Argus"
     }
   }
 }
@@ -148,7 +148,7 @@ Configuration for using the cloud vision API to detect inappropriate images.
 #### Enabled
 | type    | config file                  | environment                          |
 |---------|------------------------------|--------------------------------------|
-| boolean | `googleCloud.vision.enabled` | `MODBOT_GOOGLE_CLOUD_VISION_ENABLED` |
+| boolean | `googleCloud.vision.enabled` | `Argus_GOOGLE_CLOUD_VISION_ENABLED` |
 
 #### Vision JSON Example
 ```json
@@ -172,7 +172,7 @@ Configuration for using the cloud vision API to detect inappropriate images.
     "logging": {
       "enabled": true,
       "projectId": "example-project",
-      "logName": "modbot"
+      "logName": "Argus"
     },
     "vision": {
       "enabled": true
@@ -186,7 +186,7 @@ Array of server ids that are allowed to use special features (e.g. `/purge-invit
 
 | type     | config file        | environment                |
 |----------|--------------------|----------------------------|
-| string[] | `featureWhitelist` | `MODBOT_FEATURE_WHITELIST` |
+| string[] | `featureWhitelist` | `Argus_FEATURE_WHITELIST` |
 
 ### Feature Whitelist JSON Example
 ```json
@@ -271,9 +271,9 @@ For details on the configuration options see above.
   "authToken":"AUTH TOKEN",
   "database": {
       "host": "localhost",
-      "user": "modbot",
+      "user": "Argus",
       "password": "password",
-      "database": "modbot"
+      "database": "Argus"
   },
   "googleApiKey": "google api key",
   "googleCloud": {
@@ -284,7 +284,7 @@ For details on the configuration options see above.
     "logging": {
       "enabled": true,
       "projectId": "example-project",
-      "logName": "modbot"
+      "logName": "Argus"
     },
     "vision": {
       "enabled": true

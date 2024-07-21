@@ -14,9 +14,9 @@ import {promisify} from 'util';
 import {componentEmojiIfExists} from '../../util/format.js';
 import BetterButtonBuilder from '../../embeds/BetterButtonBuilder.js';
 
-export const DISCORD_INVITE_LINK = 'https://discord.gg/zYYhgPtmxw';
-export const GITHUB_REPOSITORY = 'https://github.com/aternosorg/modbot';
-export const PRIVACY_POLICY = 'https://aternos.gmbh/en/modbot/privacy';
+export const DISCORD_INVITE_LINK = 'https://discord.gg/voidel';
+export const GITHUB_REPOSITORY = 'https://github.com/8-bittt/Argus';
+export const PRIVACY_POLICY = 'https://aternos.gmbh/en/Argus/privacy';
 
 export const CLIENT_ID = '790967448111153153';
 export const SCOPES = ['bot', 'applications.commands'];
@@ -45,8 +45,8 @@ async function getPackageVersion() {
 
 export const COMMIT = await getGitCommit();
 async function getGitCommit() {
-    if (process.env.MODBOT_COMMIT_HASH) {
-        return process.env.MODBOT_COMMIT_HASH;
+    if (process.env.Argus_COMMIT_HASH) {
+        return process.env.Argus_COMMIT_HASH;
     }
 
     try {
@@ -73,7 +73,7 @@ export default class InfoCommand extends Command {
         await interaction.reply({
             ephemeral: true,
             embeds: [new KeyValueEmbed()
-                .setAuthor({name: 'Argus by 8bit.dev', iconURL: bot.client.user.displayAvatarURL()})
+                .setAuthor({name: 'Argus by 8Bit', iconURL: bot.client.user.displayAvatarURL()})
                 .addLine(
                     'Argus is an open source moderation bot with advanced features developed by 8Bit (https://aternos.org/). ' +
                     'It uses modern Discord features like slash-commands, context-menus, timeouts, buttons, select-menus ' +
