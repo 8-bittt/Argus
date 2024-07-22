@@ -1,6 +1,6 @@
 # Details
 
-Date : 2024-07-19 19:22:00
+Date : 2024-07-21 19:35:18
 
 Directory /Users/hayleycloud/Downloads/Argus/src
 
@@ -113,7 +113,7 @@ Total : 195 files,  10901 codes, 3058 comments, 1957 blanks, all 15916 lines
 | [src/database/export/ArgusImporter.js](/src/database/export/ArgusImporter.js) | JavaScript | 81 | 45 | 15 | 141 |
 | [src/database/export/Exporter.js](/src/database/export/Exporter.js) | JavaScript | 42 | 28 | 17 | 87 |
 | [src/database/export/Importer.js](/src/database/export/Importer.js) | JavaScript | 10 | 12 | 5 | 27 |
-| [src/database/export/ArgusImporter.js](/src/database/export/ArgusImporter.js) | JavaScript | 110 | 21 | 20 | 151 |
+| [src/database/export/ModBotImporter.js](/src/database/export/ModBotImporter.js) | JavaScript | 110 | 21 | 20 | 151 |
 | [src/database/migrations/AutoResponseVisionMigration.js](/src/database/migrations/AutoResponseVisionMigration.js) | JavaScript | 9 | 0 | 3 | 12 |
 | [src/database/migrations/BadWordVisionMigration.js](/src/database/migrations/BadWordVisionMigration.js) | JavaScript | 9 | 0 | 3 | 12 |
 | [src/database/migrations/CommentFieldMigration.js](/src/database/migrations/CommentFieldMigration.js) | JavaScript | 10 | 3 | 2 | 15 |
